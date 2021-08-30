@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/bench" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/c-center-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/c-center-idl/include/base-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/c-center-idl/include/common-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.apache.org/thrift.git" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-c/cart" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-c/coupon-center" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-c/evaluation" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-c/platform-mall-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-c/platform-mall-idl/include/base-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-c/platform-mall-idl/include/common-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-c/user-center" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-c/user-center-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-c/user-center-idl/build/src/git.xiaojukeji.com/soda-framework/go-mock-code-gen" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-c/user-center-idl/build/src/git.xiaojukeji.com/soda-framework/go-thrift" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-c/user-center-idl/include/base-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-framework/go-log" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-framework/go-thrift" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-framework/go-timer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-framework/go-trace" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-m/msgcenter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-server/common-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-server/go-thrift" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-server/item-intl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-server/order" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-server/recsys-broker" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-server/trade" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-server/trade-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-server/trade-idl/build/src/git.xiaojukeji.com/soda-framework/go-mock-code-gen" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-server/trade-idl/build/src/git.xiaojukeji.com/soda-framework/go-thrift" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-server/trade-idl/include/base-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/git.xiaojukeji.com/soda-server/trade-idl/include/soda-server/common-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/golang-design-pattern" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gopkg.in/natefinch/lumberjack.v2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gopkg.in/yaml.v2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/gotext" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/item-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/item-idl/include/base-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/matchmaker/c-center-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/matchmaker/c-center-idl/include/base-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/matchmaker/c-center-idl/include/common-idl" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/matchmaker/git.xiaojukeji.com/soda-server/order" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/matchmaker/git.xiaojukeji.com/soda-server/trade" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/platform-mall" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/trade" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/zone" vcs="Git" />
+  </component>
+</project>

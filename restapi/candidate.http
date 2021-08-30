@@ -1,0 +1,7 @@
+POST http://127.0.0.1:8080/matchmaker/v1/candidate/add
+Content-Type: application/json
+
+{
+  "email": "cugses@qq.com",
+  "gender": 1
+}
