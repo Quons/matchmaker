@@ -6,14 +6,23 @@ import (
 )
 
 func TestAddCandidate(t *testing.T) {
-	c := Candidate{
-		Email:  "cugjyb@qq.com",
-		Gender: models.GenderMale,
+	cList := []Candidate{
+		{
+			Email:  "cugses@qq.com",
+			Gender: models.GenderMale,
+			Age:    20,
+		},
+		{
+			Email:  "cugjyb@163.com",
+			Gender: models.GenderFemale,
+			Age:    24,
+		},
 	}
-	err := AddCandidate(c)
-	if err != nil {
-		t.Error(err)
-		return
+	for _, candidate := range cList {
+		err := AddCandidate(candidate)
+		if err != nil {
+			t.Error(err)
+			return
+		}
 	}
-
 }

@@ -45,3 +45,28 @@ func TestGetCandidateList(t *testing.T) {
 	}
 	t.Log(string(marshal))
 }
+
+func TestGetCandidateByEmail(t *testing.T) {
+	gotCandidate, err := GetCandidateByEmail("cugses@qq.com")
+	if err != nil {
+		t.Error(err)
+		return
+	}
+	t.Log(gotCandidate)
+}
+
+func TestUpdateCandidate(t *testing.T) {
+	c := Candidate{
+		Gender:     2,
+		Email:      "cugjyb@163.com",
+		Statue:     1,
+		UpdateTime: 1,
+		CreateTime: 1211111,
+	}
+	err := UpdateCandidate(c)
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+}
