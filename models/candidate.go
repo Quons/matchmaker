@@ -24,7 +24,7 @@ type Candidate struct {
 
 func GetCandidateList(gender Gender) ([]Candidate, error) {
 	var CandidateList []Candidate
-	err := readDB().Where("gender = ?", gender).Find(&CandidateList).Error
+	err := readDB().Where("gender = ?", gender).Where("statue=?", 0).Find(&CandidateList).Error
 	if err == gorm.ErrRecordNotFound {
 		return CandidateList, nil
 	}
