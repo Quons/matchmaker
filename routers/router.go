@@ -7,11 +7,8 @@ import (
 	//启用swagger文档
 	_ "github.com/Quons/matchmaker/docs"
 	"github.com/Quons/matchmaker/middleware"
-	"github.com/Quons/matchmaker/pkg/export"
 	"github.com/Quons/matchmaker/pkg/logging"
-	"github.com/Quons/matchmaker/pkg/qrcode"
 	"github.com/Quons/matchmaker/pkg/setting"
-	"github.com/Quons/matchmaker/pkg/upload"
 	"github.com/Quons/matchmaker/routers/api"
 	"github.com/Quons/matchmaker/routers/api/v1"
 	"github.com/Quons/matchmaker/routers/matchmaker"
@@ -81,9 +78,9 @@ func InitRouter() *gin.Engine {
 	//设置gin恢复日志数据writer
 	r.Use(gin.RecoveryWithWriter(logging.GetGinLogWriter()))
 	//静态目录
-	r.StaticFS("/export", http.Dir(export.GetExcelFullPath()))
-	r.StaticFS("/upload/images", http.Dir(upload.GetImageFullPath()))
-	r.StaticFS("/qrcode", http.Dir(qrcode.GetQrCodeFullPath()))
+	r.StaticFS("/static", http.Dir("/Users/didi/go/src/matchmaker/static"))
+	//r.StaticFS("/upload/images", http.Dir(upload.GetImageFullPath()))
+	//r.StaticFS("/qrcode", http.Dir(qrcode.GetQrCodeFullPath()))
 
 	//swagger自动文档路径
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))

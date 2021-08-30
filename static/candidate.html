@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <title>表单验证</title>
+    <style type="text/css">
+        span {
+            color: red;
+            font-size: 50px;
+        }
+
+        body {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    （1）用户名不能为空
+    （2）用户名必须在6-14位之间
+    （3）用户名只能有数字和字母组成，不能含有其它符号（正则表达式）
+    （4）密码和确认密码一致，邮箱地址合法。
+    （5）统一失去焦点验证
+    （6）错误提示信息统一在span标签中提示，并且要求字体12号，红色。
+    （7）文本框再次获得焦点后，清空错误提示信息，如果文本框中数据不合法要求清空文本框的value
+    （8）最终表单中所有项均合法方可提交
+    */
+    window.onload = function () {
+
+        // 获取email的span
+        var emailSpan = document.getElementById("emailError");
+        // 给email绑定blur事件
+        var emailElt = document.getElementById("email");
+        emailElt.onblur = function () {
+            // 获取email
+            var email = emailElt.value;
+            // 编写email的正则
+            var emailRegExp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            var ok = emailRegExp.test(email);
+            if (ok) {
+                // 合法
+            } else {
+                // 不合法
+                emailSpan.innerText = "邮箱地址不合法";
+            }
+        }
+
+        // // 获取性别
+        var genderError = document.getElementById("genderError");
+        var genderSpan = document.getElementById("gender");
+        // 给email绑定blur事件
+        genderSpan.onblur = function () {
+            // 获取email
+            const gender = genderSpan.value;
+            console.log(gender)
+            // genderError.innerText = "请选择性别";
+            if (gender === "0") {
+                // 不合法
+                genderError.innerText = "请选择性别";
+            }
+        }
+
+        // 给emailElt绑定focus
+        genderSpan.onfocus = function () {
+            if (genderError.innerText !== "") {
+                genderError.innerText = "";
+            }
+        }
+
+        // 给提交按钮绑定鼠标单击事件
+        var submitBtnElt = document.getElementById("submitBtn");
+        submitBtn.onclick = function () {
+            // 触发username的blur userpwd2的blur email的blur
+            // 不需要人工操作,使用纯JS代码触发事件.
+            // usernameElt.focus();
+            // usernameElt.blur();
+            //
+            // userpwd2Elt.focus();
+            // userpwd2Elt.blur();
+
+            emailElt.focus();
+            emailElt.blur();
+
+            genderSpan.focus();
+            genderSpan.blur();
+
+            // 当所有表单项都是合法的时候,提交表单
+            if (emailSpan.innerText === "" && genderError.innerText === "") {
+                // 获取表单对象
+                var userFormElt = document.getElementById("userForm");
+                // 可以在这里设置action,也可以不在这里.
+                userFormElt.action = "http://192.168.1.112:8080/matchmaker/v1/candidate/add";
+                // 提交表单
+                userFormElt.submit();
+
+            }
+        }
+    }
+</script>
+
+
+<!--这个表单提交应该使用post，这里为了检测，所以使用get。-->
+<!-- <form id="userForm" action="http://localhost:8080/jd/save" method="get"> -->
+<form id="userForm" method="post" style="font-size: 50px">
+    邮箱<input type="text" name="email" id="email" style="font-size: 50px"/><span id="emailError" style="font-size: 40px"></span><br>
+    性别 <select name="gender" id="gender" style="font-size: 50px">
+    <option selected value=0>请选择性别</option>
+    <option value=1>男生</option>
+    <option value=2>女生</option>
+</select>
+    <span id="genderError" style="font-size: 40px"></span><br>
+    <!--    性别<input type="text" name="username" id="username"/><span id="usernameError"></span><br>-->
+    <!-- <input type="submit" value="注册" /> -->
+    <br>
+    <input type="button" value="注册" id="submitBtn" style="font-size: 50px"/>
+    <input type="reset" value="重置" style="font-size: 50px"/>
+</form>
+</span>
+</body>
+</html>
+
