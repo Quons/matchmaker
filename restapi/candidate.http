@@ -5,3 +5,12 @@ Content-Type: application/json
   "email": "cugses@qq.com",
   "gender": 1
 }
+
+#####
+POST http://123.57.31.62:80/matchmaker/v1/candidate/add
+Content-Type: application/json
+
+{
+  "email": "cugses@qq.com",
+  "gender": 1
+}

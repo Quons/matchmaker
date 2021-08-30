@@ -78,7 +78,7 @@ func InitRouter() *gin.Engine {
 	//设置gin恢复日志数据writer
 	r.Use(gin.RecoveryWithWriter(logging.GetGinLogWriter()))
 	//静态目录
-	r.StaticFS("/static", http.Dir("/Users/didi/go/src/matchmaker/static"))
+	r.StaticFS("/static", http.Dir("./static"))
 	//r.StaticFS("/upload/images", http.Dir(upload.GetImageFullPath()))
 	//r.StaticFS("/qrcode", http.Dir(qrcode.GetQrCodeFullPath()))
 
