@@ -19,7 +19,7 @@ import (
 	"strings"
 )
 
-var logPath string = "/Users/didi/go/src/matchmaker/logs/"
+var logPath string
 var dirName string
 
 func Setup() {
@@ -35,9 +35,16 @@ func Setup() {
 		logrus.Fatal(err.Error())
 	}
 	logrus.SetLevel(logLevel)
+	// 日志目录
+	logPath = setting.AppSetting.LogPath + "/logs/"
+	err = file.MkDir(logPath)
+	if err != nil {
+		panic(err)
+	}
 	//打印行号，funcName
 	logrus.SetReportCaller(true)
 	//输出设置
+
 	writer := GetLogrusWriter()
 	//设置local file system hook
 	lfsHook := lfshook.NewHook(lfshook.WriterMap{

@@ -10,7 +10,7 @@ func TestAddCandidate(t *testing.T) {
 		{
 			Email:  "cugses@qq.com",
 			Gender: models.GenderMale,
-			Age:    20,
+			Age:    22,
 		},
 		{
 			Email:  "cugjyb@163.com",

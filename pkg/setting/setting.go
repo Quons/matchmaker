@@ -23,6 +23,7 @@ type App struct {
 	FontSavePath   string
 
 	LogLevel string
+	LogPath  string
 }
 
 var AppSetting = &App{}

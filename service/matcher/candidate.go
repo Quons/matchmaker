@@ -33,17 +33,22 @@ func AddCandidate(candidate Candidate) error {
 		logrus.Errorf("get_candidate_by_email_err:%v", err)
 		return err
 	}
-	// 已存在，就更新
-	if existCandidate.Email != "" {
-
-		return nil
-	}
-
 	dbCandidate := models.Candidate{
 		Gender: candidate.Gender,
 		Email:  candidate.Email,
 		Age:    candidate.Age,
 	}
+
+	// 已存在，就更新
+	if existCandidate.Email != "" {
+		err := models.UpdateCandidate(dbCandidate)
+		if err != nil {
+			logrus.Errorf("udpate_candidate_err:%v", err)
+			return err
+		}
+		return nil
+	}
+
 	err = models.AddCandidate(dbCandidate)
 	if err != nil {
 		logrus.Errorf("add_candidate_err:%v", err)

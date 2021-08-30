@@ -47,7 +47,7 @@ func TestGetCandidateList(t *testing.T) {
 }
 
 func TestGetCandidateByEmail(t *testing.T) {
-	gotCandidate, err := GetCandidateByEmail("cugses@qq.com")
+	gotCandidate, err := GetCandidateByEmail("cug2ses@qq.com")
 	if err != nil {
 		t.Error(err)
 		return
