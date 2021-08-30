@@ -84,9 +84,9 @@
             const age = ageSpan.value;
             console.log(age)
             // genderError.innerText = "请选择性别";
-            if (age <= "14" || age > "50") {
+            if (age < "1980" || age > "2005") {
                 // 不合法
-                ageError.innerText = "14 < 年龄 <= 50";
+                ageError.innerText = "请选择生日";
             }
         }
 
@@ -138,12 +138,42 @@
     <option value=2>女生</option>
 </select>
     <span id="genderError" style="font-size: 40px"></span><br>
-    年龄<input type="number" min="15" max="50" name="age" id="age" style="font-size: 50px"/><span id="ageError"
-                                                                                                style="font-size: 40px"></span>
+    年龄
+    <select name="age" id="age" style="font-size: 50px">
+        <option selected value=0>请选择生日</option>
+        <option>1980</option>
+        <option>1981</option>
+        <option>1982</option>
+        <option>1983</option>
+        <option>1984</option>
+        <option>1985</option>
+        <option>1986</option>
+        <option>1987</option>
+        <option>1988</option>
+        <option>1989</option>
+        <option>1990</option>
+        <option>1991</option>
+        <option>1992</option>
+        <option>1993</option>
+        <option>1994</option>
+        <option>1995</option>
+        <option>1996</option>
+        <option>1997</option>
+        <option>1998</option>
+        <option>1999</option>
+        <option>2000</option>
+        <option>2001</option>
+        <option>2002</option>
+        <option>2003</option>
+        <option>2004</option>
+        <option>2005</option>
+    </select>
+    <span id="ageError"
+          style="font-size: 40px"></span>
     <!--    性别<input type="text" name="username" id="username"/><span id="usernameError"></span><br>-->
     <!-- <input type="submit" value="注册" /> -->
     <br>
-    <input type="button" value="注册" id="submitBtn" style="font-size: 50px"/>
+    <input type="button" value="提交" id="submitBtn" style="font-size: 50px"/>
     <input type="reset" value="重置" style="font-size: 50px"/>
 </form>
 </span>

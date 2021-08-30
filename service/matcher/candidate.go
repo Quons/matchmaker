@@ -23,7 +23,7 @@ func AddCandidate(candidate Candidate) error {
 		logrus.Errorf("empty_email")
 		return errors.New("邮箱为空")
 	}
-	if candidate.Age <= 14 || candidate.Age >= 50 {
+	if candidate.Age < 1980 || candidate.Age > 2005 {
 		logrus.Errorf("invalid_age:%v", candidate.Age)
 		return errors.New("年龄不合法")
 	}
