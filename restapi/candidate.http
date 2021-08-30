@@ -7,6 +7,15 @@ Content-Type: application/json
 }
 
 #####
+POST http://127.0.0.1:80/matchmaker/v1/candidate/updateStatue
+Content-Type: application/json
+
+{
+  "email": "cugses@qq.com",
+  "statue": 1
+}
+
+#####
 POST http://123.57.31.62:80/matchmaker/v1/candidate/add
 Content-Type: application/json
 

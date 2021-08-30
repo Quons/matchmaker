@@ -11,7 +11,7 @@ func TestAddCandidate(t *testing.T) {
 	c := Candidate{
 		Gender:     1,
 		Email:      "cugjyb@qq.com",
-		Statue:     1,
+		Status:     1,
 		UpdateTime: 1,
 		CreateTime: 1,
 	}
@@ -59,7 +59,7 @@ func TestUpdateCandidate(t *testing.T) {
 	c := Candidate{
 		Gender:     2,
 		Email:      "cugjyb@163.com",
-		Statue:     1,
+		Status:     1,
 		UpdateTime: 1,
 		CreateTime: 1211111,
 	}

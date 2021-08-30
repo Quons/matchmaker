@@ -12,19 +12,26 @@ const (
 	GenderFemale Gender = 2
 )
 
+type CandidateStatus int
+
+const (
+	CandidateStatusOk   CandidateStatus = 1
+	CandidateStatusStop CandidateStatus = 2
+)
+
 type Candidate struct {
-	ID         int64  `gorm:"primary_key;column:id" json:"id"`
-	Gender     Gender `gorm:"column:gender" json:"gender"`
-	Email      string `gorm:"column:email" json:"email"`
-	Age        int64  `gorm:"column:age" json:"age"`
-	Statue     int    `gorm:"column:statue" json:"statue"`
-	UpdateTime int64  `gorm:"column:update_time" json:"update_time"`
-	CreateTime int64  `gorm:"column:create_time" json:"create_time"`
+	ID         int64           `gorm:"primary_key;column:id" json:"id"`
+	Gender     Gender          `gorm:"column:gender" json:"gender"`
+	Email      string          `gorm:"column:email" json:"email"`
+	Age        int64           `gorm:"column:age" json:"age"`
+	Status     CandidateStatus `gorm:"column:status" json:"status"`
+	UpdateTime int64           `gorm:"column:update_time" json:"update_time"`
+	CreateTime int64           `gorm:"column:create_time" json:"create_time"`
 }
 
 func GetCandidateList(gender Gender) ([]Candidate, error) {
 	var CandidateList []Candidate
-	err := readDB().Where("gender = ?", gender).Where("statue=?", 0).Find(&CandidateList).Error
+	err := readDB().Where("gender = ?", gender).Where("status=?", CandidateStatusOk).Find(&CandidateList).Error
 	if err == gorm.ErrRecordNotFound {
 		return CandidateList, nil
 	}

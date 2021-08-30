@@ -2,7 +2,7 @@
 <html lang="">
 <head>
     <meta charset="utf-8">
-    <title>牵线搭桥</title>
+    <title>配对状态修改</title>
     <style type="text/css">
         span {
             color: red;
@@ -45,77 +45,42 @@
                 emailSpan.innerText = "邮箱地址不合法";
             }
         }
-
-        // // 获取性别
-        var genderError = document.getElementById("genderError");
-        var genderSpan = document.getElementById("gender");
-        // 给email绑定blur事件
-        genderSpan.onblur = function () {
+        var pushStatusError = document.getElementById("pushStatusError");
+        // 推送状态
+        var pushStatusSpan = document.getElementById("pushStatus");
+        // 绑定事件
+        pushStatusSpan.onblur = function () {
             // 获取email
-            const gender = genderSpan.value;
-            console.log(gender)
-            // genderError.innerText = "请选择性别";
-            if (gender === "0") {
+            const status = pushStatusSpan.value;
+            console.log(status)
+            if (status === "0") {
                 // 不合法
-                genderError.innerText = "请选择性别";
+                pushStatusError.innerText = "请选择推送状态";
             }
         }
 
         // 给emailElt绑定focus
-        genderSpan.onfocus = function () {
-            if (genderError.innerText !== "") {
-                genderError.innerText = "";
+        pushStatusSpan.onfocus = function () {
+            if (pushStatusError.innerText !== "") {
+                pushStatusError.innerText = "";
             }
         }
-
-        // 获取年龄
-        var ageError = document.getElementById("ageError");
-        var ageSpan = document.getElementById("age");
-        // 给age绑定blur事件
-        ageSpan.onblur = function () {
-            // 获取email
-            const age = ageSpan.value;
-            console.log(age)
-            // genderError.innerText = "请选择性别";
-            if (age < "14" || age > "50") {
-                // 不合法
-                ageError.innerText = "14 <= 年龄 <= 50";
-            }
-        }
-
-        // 给emailElt绑定focus
-        ageSpan.onfocus = function () {
-            if (ageError.innerText !== "") {
-                ageError.innerText = "";
-            }
-        }
-
         // 给提交按钮绑定鼠标单击事件
         var submitBtnElt = document.getElementById("submitBtn");
         submitBtn.onclick = function () {
             // 触发username的blur userpwd2的blur email的blur
-            // 不需要人工操作,使用纯JS代码触发事件.
-            // usernameElt.focus();
-            // usernameElt.blur();
-            //
-            // userpwd2Elt.focus();
-            // userpwd2Elt.blur();
-
             emailElt.focus();
             emailElt.blur();
 
-            genderSpan.focus();
-            genderSpan.blur();
-
-            ageSpan.focus();
-            ageSpan.blur();
+            pushStatusSpan.focus();
+            pushStatusSpan.blur();
 
             // 当所有表单项都是合法的时候,提交表单
-            if (emailSpan.innerText === "" && genderError.innerText === "" && ageError.innerText === "") {
+            if (emailSpan.innerText === "" && pushStatusError.innerText === "") {
                 // 获取表单对象
                 var userFormElt = document.getElementById("userForm");
                 // 可以在这里设置action,也可以不在这里.
-                userFormElt.action = "http://123.57.31.62:80/matchmaker/v1/candidate/add";
+                userFormElt.action = "http://123.57.31.62:80/matchmaker/v1/candidate/stop";
                 // 提交表单
                 userFormElt.submit();
 
@@ -130,19 +95,16 @@
 <form id="userForm" method="post" style="font-size: 50px">
     邮箱<input type="text" name="email" id="email" style="font-size: 50px"/><span id="emailError"
                                                                                 style="font-size: 40px"></span><br>
-    性别 <select name="gender" id="gender" style="font-size: 50px">
-    <option selected value=0>请选择性别</option>
-    <option value=1>男生</option>
-    <option value=2>女生</option>
+    推送状态 <select name="pushStatus" id="pushStatus" style="font-size: 50px">
+    <option selected value=0>请选择推送状态</option>
+    <option value=1>停止推送</option>
+    <option value=2>继续推送</option>
 </select>
-    <span id="genderError" style="font-size: 40px"></span><br>
-    年龄<input type="number" min="14" max="50" name="age" id="age" style="font-size: 50px"/><span id="ageError"
-                                                                              style="font-size: 40px"></span>
+    <span id="pushStatusError" style="font-size: 40px"></span><br>
     <!--    性别<input type="text" name="username" id="username"/><span id="usernameError"></span><br>-->
     <!-- <input type="submit" value="注册" /> -->
     <br>
-    <input type="button" value="注册" id="submitBtn" style="font-size: 50px"/>
-    <input type="reset" value="重置" style="font-size: 50px"/>
+    <input type="button" value="提交" id="submitBtn" style="font-size: 50px"/>
 </form>
 </span>
 </body>

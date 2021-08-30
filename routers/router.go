@@ -21,6 +21,8 @@ func registerRouter(r *gin.Engine) {
 	{
 		//新增候选人
 		apiv2.POST("/candidate/add", matchmaker.AddCandidate)
+		//修改推送状态
+		apiv2.POST("/candidate/updateStatus", matchmaker.UpdatePushStatus)
 	}
 }
 
