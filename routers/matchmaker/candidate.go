@@ -19,17 +19,17 @@ func AddCandidate(c *gin.Context) {
 	err := c.ShouldBind(&candidate)
 	if err != nil {
 		log.Info(err)
-		appG.Response(nil, e.ERROR_INVALID_PARAMS)
+		appG.Response("参数错误", e.ERROR_INVALID_PARAMS)
 		return
 	}
 	log.WithField("courseId", candidate).Info()
 	err = matcher.AddCandidate(candidate)
 	if err != nil {
 		log.Errorf("add_candidate_err:%v", err)
-		appG.Response(nil, e.ERROR_DATA_ERROR)
+		appG.Response(err.Error(), e.ERROR_DATA_ERROR)
 		return
 	}
-	appG.Response(nil, e.SUCCESS)
+	appG.Response("提交信息成功", e.SUCCESS)
 }
 
 // @Summary 修改推送状态
@@ -50,8 +50,8 @@ func UpdatePushStatus(c *gin.Context) {
 	err = matcher.UpdatePushStatus(pushStatus)
 	if err != nil {
 		log.Errorf("update_candidate_err:%v", err)
-		appG.Response(nil, e.ERROR_DATA_ERROR)
+		appG.Response(err.Error(), e.ERROR_DATA_ERROR)
 		return
 	}
-	appG.Response(nil, e.SUCCESS)
+	appG.Response("更新推送状态成功", e.SUCCESS)
 }

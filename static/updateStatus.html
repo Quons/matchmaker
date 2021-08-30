@@ -15,7 +15,9 @@
     </style>
 </head>
 <body>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript">
+
     /*
     （1）用户名不能为空
     （2）用户名必须在6-14位之间
@@ -45,6 +47,14 @@
                 emailSpan.innerText = "邮箱地址不合法";
             }
         }
+
+        // 给emailElt绑定focus
+        emailElt.onfocus = function () {
+            if (emailSpan.innerText !== "") {
+                emailSpan.innerText = "";
+            }
+        }
+
         var pushStatusError = document.getElementById("pushStatusError");
         // 推送状态
         var pushStatusSpan = document.getElementById("pushStatus");
@@ -67,38 +77,40 @@
         }
         // 给提交按钮绑定鼠标单击事件
         var submitBtnElt = document.getElementById("submitBtn");
-        submitBtn.onclick = function () {
-            // 触发username的blur userpwd2的blur email的blur
-            emailElt.focus();
-            emailElt.blur();
 
-            pushStatusSpan.focus();
-            pushStatusSpan.blur();
 
-            // 当所有表单项都是合法的时候,提交表单
-            if (emailSpan.innerText === "" && pushStatusError.innerText === "") {
-                // 获取表单对象
-                var userFormElt = document.getElementById("userForm");
-                // 可以在这里设置action,也可以不在这里.
-                userFormElt.action = "http://123.57.31.62:80/matchmaker/v1/candidate/stop";
-                // 提交表单
-                userFormElt.submit();
+        $(document).ready(function () {
+            $("#submitBtn").click(function () {
+                // 触发username的blur userpwd2的blur email的blur
+                emailElt.focus();
+                emailElt.blur();
 
-            }
-        }
+                pushStatusSpan.focus();
+                pushStatusSpan.blur();
+                if (emailSpan.innerText === "" && pushStatusError.innerText === "") {
+                    $.post("http://123.57.31.62:80/matchmaker/v1/candidate/updateStatus", {
+                            email: $("#email").val(),
+                            status: $("#pushStatus").val(),
+                        },
+                        function (data, status) {
+                            alert(data.data);
+                        });
+                }
+            });
+        });
     }
 </script>
 
 
 <!--这个表单提交应该使用post，这里为了检测，所以使用get。-->
 <!-- <form id="userForm" action="http://localhost:8080/jd/save" method="get"> -->
-<form id="userForm" method="post" style="font-size: 50px">
+<form id="userForm" method="post" style="font-size: 50px" target="rfFrame">
     邮箱<input type="text" name="email" id="email" style="font-size: 50px"/><span id="emailError"
                                                                                 style="font-size: 40px"></span><br>
-    推送状态 <select name="pushStatus" id="pushStatus" style="font-size: 50px">
+    推送状态 <select name="status" id="pushStatus" style="font-size: 50px">
     <option selected value=0>请选择推送状态</option>
-    <option value=1>停止推送</option>
-    <option value=2>继续推送</option>
+    <option value=1>继续推送</option>
+    <option value=2>停止推送</option>
 </select>
     <span id="pushStatusError" style="font-size: 40px"></span><br>
     <!--    性别<input type="text" name="username" id="username"/><span id="usernameError"></span><br>-->
@@ -106,6 +118,7 @@
     <br>
     <input type="button" value="提交" id="submitBtn" style="font-size: 50px"/>
 </form>
+<iframe src="" frameborder="0" style="display:none;" name="rfFrame"></iframe>
 </span>
 </body>
 </html>

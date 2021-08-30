@@ -21,17 +21,17 @@ func AddCandidate(candidate Candidate) error {
 	}
 	if candidate.Email == "" {
 		logrus.Errorf("empty_email")
-		return errors.New("empty_email")
+		return errors.New("邮箱为空")
 	}
 	if candidate.Age <= 14 || candidate.Age >= 50 {
 		logrus.Errorf("invalid_age:%v", candidate.Age)
-		return errors.New("invalid_age")
+		return errors.New("年龄不合法")
 	}
 	// 先查询该邮箱是否已经存在
 	existCandidate, err := models.GetCandidateByEmail(candidate.Email)
 	if err != nil {
 		logrus.Errorf("get_candidate_by_email_err:%v", err)
-		return err
+		return errors.New("查询信息失败")
 	}
 	dbCandidate := models.Candidate{
 		Gender: candidate.Gender,
@@ -45,7 +45,7 @@ func AddCandidate(candidate Candidate) error {
 		err := models.UpdateCandidate(dbCandidate)
 		if err != nil {
 			logrus.Errorf("udpate_candidate_err:%v", err)
-			return err
+			return errors.New("更新信息失败")
 		}
 		return nil
 	}
@@ -53,7 +53,7 @@ func AddCandidate(candidate Candidate) error {
 	err = models.AddCandidate(dbCandidate)
 	if err != nil {
 		logrus.Errorf("add_candidate_err:%v", err)
-		return err
+		return errors.New("添加信息失败")
 	}
 	return nil
 }
@@ -73,11 +73,11 @@ func UpdatePushStatus(pushStatus PushStatus) error {
 	candidate, err := models.GetCandidateByEmail(pushStatus.Email)
 	if err != nil {
 		logrus.WithField("err", err).Info("get_candidate_by_email_err")
-		return err
+		return errors.New("查询信息失败")
 	}
 	if candidate.Email == "" {
 		logrus.WithField("email", pushStatus.Email).Warn("no_such_email")
-		return errors.New("no_such_email")
+		return errors.New("该邮箱不存在:" + pushStatus.Email)
 	}
 	if pushStatus.Status == 2 {
 		// 修改成停止推送
@@ -89,8 +89,7 @@ func UpdatePushStatus(pushStatus PushStatus) error {
 	err = models.UpdateCandidate(candidate)
 	if err != nil {
 		logrus.WithField("err", err).Error("update_candidate_err")
-		return err
+		return errors.New("更新推送状态失败")
 	}
-	return err
-
+	return nil
 }
