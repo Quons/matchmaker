@@ -68,6 +68,28 @@
             }
         }
 
+        // 获取年龄
+        var ageError = document.getElementById("ageError");
+        var ageSpan = document.getElementById("age");
+        // 给age绑定blur事件
+        ageSpan.onblur = function () {
+            // 获取email
+            const age = ageSpan.value;
+            console.log(age)
+            // genderError.innerText = "请选择性别";
+            if (age < "14" || age > "50") {
+                // 不合法
+                ageError.innerText = "14 <= 年龄 <= 50";
+            }
+        }
+
+        // 给emailElt绑定focus
+        ageSpan.onfocus = function () {
+            if (ageError.innerText !== "") {
+                ageError.innerText = "";
+            }
+        }
+
         // 给提交按钮绑定鼠标单击事件
         var submitBtnElt = document.getElementById("submitBtn");
         submitBtn.onclick = function () {
@@ -85,8 +107,11 @@
             genderSpan.focus();
             genderSpan.blur();
 
+            ageSpan.focus();
+            ageSpan.blur();
+
             // 当所有表单项都是合法的时候,提交表单
-            if (emailSpan.innerText === "" && genderError.innerText === "") {
+            if (emailSpan.innerText === "" && genderError.innerText === "" && ageError.innerText === "") {
                 // 获取表单对象
                 var userFormElt = document.getElementById("userForm");
                 // 可以在这里设置action,也可以不在这里.
@@ -103,13 +128,16 @@
 <!--这个表单提交应该使用post，这里为了检测，所以使用get。-->
 <!-- <form id="userForm" action="http://localhost:8080/jd/save" method="get"> -->
 <form id="userForm" method="post" style="font-size: 50px">
-    邮箱<input type="text" name="email" id="email" style="font-size: 50px"/><span id="emailError" style="font-size: 40px"></span><br>
+    邮箱<input type="text" name="email" id="email" style="font-size: 50px"/><span id="emailError"
+                                                                                style="font-size: 40px"></span><br>
     性别 <select name="gender" id="gender" style="font-size: 50px">
     <option selected value=0>请选择性别</option>
     <option value=1>男生</option>
     <option value=2>女生</option>
 </select>
     <span id="genderError" style="font-size: 40px"></span><br>
+    年龄<input type="text" name="age" id="age" style="font-size: 50px"/><span id="ageError"
+                                                                            style="font-size: 40px"></span>
     <!--    性别<input type="text" name="username" id="username"/><span id="usernameError"></span><br>-->
     <!-- <input type="submit" value="注册" /> -->
     <br>
