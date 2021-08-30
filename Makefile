@@ -19,6 +19,10 @@ run:
     # @关闭回声
 	@go build -v .
 	sudo systemctl restart gin
+prod:
+    # @关闭回声
+	go build
+	./matchmaker -config=/root/go/matchmaker/conf/prod.ini
 
 tool:
 	go vet ./...; true
