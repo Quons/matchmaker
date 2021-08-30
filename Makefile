@@ -6,6 +6,8 @@ build:
 	# @关闭回声
 	swag init
 	@go build -v .
+build_linux:
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
 
 dev:
 	# @关闭回声

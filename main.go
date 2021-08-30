@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"github.com/Quons/matchmaker/models"
 	"github.com/Quons/matchmaker/pkg/gredis"
@@ -19,10 +20,10 @@ import (
 )
 
 func init() {
-	//var runmode string
-	//flag.StringVar(&runmode, "runmode", "dev", "runmode:dev,test,pre,prod;default dev mode")
-	//flag.Parse()
-	setting.Setup("/Users/didi/go/src/matchmaker/conf/dev.ini")
+	var config string
+	flag.StringVar(&config, "config", "/Users/didi/go/src/matchmaker/conf/dev.ini", "配置文件目录")
+	flag.Parse()
+	setting.Setup(config)
 	logging.Setup()
 	models.Setup()
 	gredis.Setup()
