@@ -300,66 +300,63 @@
 
 <div class="container">
     <div class="header">
-        <h1>牵线搭桥</h1>
+        <h1>填写信息，匹配有缘人！</h1>
     </div>
     <div class="content">
-        <div class="description">
-            <p><strong>匹配规则说明：</strong></p>
-            <p>1，目前匹配规则比较简单，男女生年龄差小于5的都会进行匹配（效果不错的话，可以扩展规则）</p>
-            <p>2，匹配成功会发送对方email的邮件</p>
-            <p>3，匹配推送频率：目前设定最短3天匹配一次（有可能某一次所有合适的对象都匹配到其他人啦~）</p>
-            <p>4，可随时停止牵线推送，方式详见牵线邮件</p>
-            <p>5，最小信息收集原则，您需要提供个人邮件、年龄、性别即可</p>
-            <!--            <p><strong>注意：请按第一印象最快的选择，如果不能确定，可回忆童年时的情况，或者以你最熟悉的人对你的评价来从中选择。</strong></p>-->
-        </div>
         <form method="POST" id="userForm" novalidate="novalidate">
             <div class="field">
-                <div class="field-label" >邮箱：</div>
-                <input type="text" name="email" id="email" class="input-text"/><span id="emailError" class="req"></span>
+                <div class="field-label"><label for="email" class="field-label">邮箱：</label>
+                    <input type="text" name="email" id="email" class="input-text"/><span id="emailError"
+                                                                                         class="req"></span>
+                </div>
             </div>
             <div class="field">
-                <div class="field-label">性别：</div>
+                <div class="field-label">性别：
 
-                <select name="gender" id="gender" class="input-text">
-                    <option selected value=0>请选择性别</option>
-                    <option value=1>男生</option>
-                    <option value=2>女生</option>
-                </select>
-                <span id="genderError" class="req"></span><br>
+                    <select name="gender" id="gender" class="input-text">
+                        <option selected value=0>请选择性别</option>
+                        <option value=1>男生</option>
+                        <option value=2>女生</option>
+                    </select>
+
+                    <span id="genderError" class="req"></span><br>
+                </div>
             </div>
 
             <div class="field">
-                <div class="field-label">生日：</div>
-                <select name="age" id="age" class="field-label">
-                    <option selected value=0>请选择生日</option>
-                    <option>1980</option>
-                    <option>1981</option>
-                    <option>1982</option>
-                    <option>1983</option>
-                    <option>1984</option>
-                    <option>1985</option>
-                    <option>1986</option>
-                    <option>1987</option>
-                    <option>1988</option>
-                    <option>1989</option>
-                    <option>1990</option>
-                    <option>1991</option>
-                    <option>1992</option>
-                    <option>1993</option>
-                    <option>1994</option>
-                    <option>1995</option>
-                    <option>1996</option>
-                    <option>1997</option>
-                    <option>1998</option>
-                    <option>1999</option>
-                    <option>2000</option>
-                    <option>2001</option>
-                    <option>2002</option>
-                    <option>2003</option>
-                    <option>2004</option>
-                    <option>2005</option>
-                </select>
-                <span id="ageError" class="req"></span>
+                <div class="field-label">生日：
+                    <select name="age" id="age" class="field-label">
+                        <option selected value=0>请选择生日</option>
+                        <option>1980</option>
+                        <option>1981</option>
+                        <option>1982</option>
+                        <option>1983</option>
+                        <option>1984</option>
+                        <option>1985</option>
+                        <option>1986</option>
+                        <option>1987</option>
+                        <option>1988</option>
+                        <option>1989</option>
+                        <option>1990</option>
+                        <option>1991</option>
+                        <option>1992</option>
+                        <option>1993</option>
+                        <option>1994</option>
+                        <option>1995</option>
+                        <option>1996</option>
+                        <option>1997</option>
+                        <option>1998</option>
+                        <option>1999</option>
+                        <option>2000</option>
+                        <option>2001</option>
+                        <option>2002</option>
+                        <option>2003</option>
+                        <option>2004</option>
+                        <option>2005</option>
+                    </select>
+                    <span id="ageError" class="req"></span>
+                </div>
+
             </div>
 
             <div class="footer">
@@ -368,6 +365,15 @@
                 </div>
             </div>
         </form>
+        <div class="description">
+            <p><strong>匹配规则说明：</strong></p>
+            <p>1，男女生年龄差小于5（效果不错的话，可以扩展规则）</p>
+            <p>2，匹配成功会推送对方email</p>
+            <p>3，最短3天匹配一次（有可能某一次所有合适的对象都匹配到其他人啦~）</p>
+            <p>4，每人每次只会匹配一名对象</p>
+            <p>5，可随时停止牵线推送，方式详见匹配邮件</p>
+            <p>6，信息安全，只需提供个人邮件、年龄、性别即可</p>
+        </div>
         <div id="debug"></div>
     </div>
 </div>
