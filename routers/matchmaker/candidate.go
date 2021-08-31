@@ -43,7 +43,7 @@ func UpdatePushStatus(c *gin.Context) {
 	err := c.ShouldBind(&pushStatus)
 	if err != nil {
 		log.Info(err)
-		appG.Response(nil, e.ERROR_INVALID_PARAMS)
+		appG.Response("状态修改失败：参数错误", e.ERROR_INVALID_PARAMS)
 		return
 	}
 	log.WithField("courseId", pushStatus).Info()
