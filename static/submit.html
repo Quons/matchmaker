@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>牵线搭桥</title>
+    <style>
+        /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+        button, hr, input {
+            overflow: visible
+        }
+
+        [type=checkbox], [type=radio], legend {
+            box-sizing: border-box;
+            padding: 0
+        }
+
+        html {
+            line-height: 1.15;
+            -webkit-text-size-adjust: 100%
+        }
+
+        h1 {
+            font-size: 2em;
+            margin: .67em 0
+        }
+
+        a {
+            background-color: transparent
+        }
+
+        b, strong {
+            font-weight: bolder
+        }
+
+        small {
+            font-size: 80%
+        }
+
+        button, input, optgroup, select, textarea {
+            font-family: inherit;
+            font-size: 100%;
+            line-height: 1.15;
+            margin: 0
+        }
+
+        button, select {
+            text-transform: none
+        }
+
+        [type=button], [type=reset], [type=submit], button {
+            -webkit-appearance: button
+        }
+
+        [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner, button::-moz-focus-inner {
+            border-style: none;
+            padding: 0
+        }
+
+        [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring, button:-moz-focusring {
+            outline: ButtonText dotted 1px
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.2;
+            background-color: #fff;
+            color: #333
+        }
+
+        .container {
+            padding-bottom: 68px
+        }
+
+        .header {
+            padding: 1px;
+            background-color: #1ea0fa;
+            text-align: center
+        }
+
+        .footer, .input-text, .input-text input {
+            background-color: #fff
+        }
+
+        .header h1 {
+            font-size: 20px;
+            color: #fff
+        }
+
+        .description {
+            margin: 0 0 10px;
+            padding: 15px;
+            border-bottom: 1px dotted #ccc
+        }
+
+        div.field {
+            clear: both;
+            padding: 6px 12px
+        }
+
+        span.req {
+            color: red !important;
+            margin: 2px 0 0 2px
+        }
+
+        div.field-label {
+            margin: 5px 0 !important;
+            font-size: 16px;
+            font-weight: 700
+        }
+
+        .input-text {
+            margin: 5px 0;
+            border: 1px solid #d5d5d5;
+            border-radius: 3px
+        }
+
+        .input-text input {
+            width: 100%;
+            padding: 8px 0;
+            border: 0;
+            border-radius: 5px
+        }
+
+        .ui-controlgroup {
+            margin: 5px 0;
+            border: 1px solid #d5d5d5;
+            border-radius: 4px
+        }
+
+        .ui-controlgroup .ui-radio {
+            border-bottom: 1px solid #ebebeb;
+            background: #fff;
+            font-size: 14px
+        }
+
+        .ui-controlgroup .ui-radio label {
+            display: block;
+            margin-left: 40px;
+            padding: 13px 10px 10px 0;
+            color: #333;
+            word-wrap: break-word;
+            word-break: break-all;
+            cursor: pointer
+        }
+
+        .ui-controlgroup .ui-radio .radiowrapper {
+            float: left
+        }
+
+        .ui-controlgroup .ui-radio .radiowrapper input {
+            width: 20px;
+            height: 20px;
+            margin: 10px 0 0 10px
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%
+        }
+
+        .btn {
+            padding: 20px 12px
+        }
+
+        .button {
+            width: 100%;
+            padding: 8px;
+            border: 0;
+            border-radius: .2em;
+            background-color: #1ea0fa;
+            color: #fff;
+            font-size: 1.2em;
+            cursor: pointer
+        }
+
+        .button:disabled {
+            background-color: #6c757d
+        }
+
+        button:focus {
+            outline: 0
+        }
+
+        #debug {
+            margin-bottom: 1em;
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+
+        // 获取email的span
+        var emailSpan = document.getElementById("emailError");
+        // 给email绑定blur事件
+        var emailElt = document.getElementById("email");
+        emailElt.onblur = function () {
+            // 获取email
+            var email = emailElt.value;
+            // 编写email的正则
+            var emailRegExp = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+            var ok = emailRegExp.test(email);
+            if (ok) {
+                // 合法
+            } else {
+                // 不合法
+                emailSpan.innerText = "邮箱地址不合法";
+            }
+        }
+        // 给emailElt绑定focus
+        emailElt.onfocus = function () {
+            if (emailSpan.innerText !== "") {
+                emailSpan.innerText = "";
+            }
+        }
+
+        // // 获取性别
+        var genderError = document.getElementById("genderError");
+        var genderSpan = document.getElementById("gender");
+        // 给email绑定blur事件
+        genderSpan.onblur = function () {
+            // 获取email
+            const gender = genderSpan.value;
+            console.log(gender)
+            // genderError.innerText = "请选择性别";
+            if (gender === "0") {
+                // 不合法
+                genderError.innerText = "请选择性别";
+            }
+        }
+
+        // 给emailElt绑定focus
+        genderSpan.onfocus = function () {
+            if (genderError.innerText !== "") {
+                genderError.innerText = "";
+            }
+        }
+
+        // 获取年龄
+        var ageError = document.getElementById("ageError");
+        var ageSpan = document.getElementById("age");
+        // 给age绑定blur事件
+        ageSpan.onblur = function () {
+            // 获取email
+            const age = ageSpan.value;
+            console.log(age)
+            // genderError.innerText = "请选择性别";
+            if (age < "1980" || age > "2005") {
+                // 不合法
+                ageError.innerText = "请选择生日";
+            }
+        }
+
+        // 给emailElt绑定focus
+        ageSpan.onfocus = function () {
+            if (ageError.innerText !== "") {
+                ageError.innerText = "";
+            }
+        }
+
+        $(document).ready(function () {
+            $("#submitBtn").click(function () {
+                // 触发username的blur userpwd2的blur email的blur
+                emailElt.focus();
+                emailElt.blur();
+
+
+                genderSpan.focus();
+                genderSpan.blur();
+
+                ageSpan.focus();
+                ageSpan.blur();
+
+                if (emailSpan.innerText === "" && genderError.innerText === "" && ageError.innerText === "") {
+                    // $.post("http://127.0.0.1:80/matchmaker/v1/candidate/updateStatus", {
+                    $.post("http://matcher.space/matchmaker/v1/candidate/add", {
+                            email: $("#email").val(),
+                            gender: $("#gender").val(),
+                            age: $("#age").val(),
+                        },
+                        function (data, status) {
+                            alert(data.data);
+                        });
+                }
+            });
+        });
+    }
+</script>
+
+
+<div class="container">
+    <div class="header">
+        <h1>牵线搭桥</h1>
+    </div>
+    <div class="content">
+        <div class="description">
+            <p><strong>匹配规则说明：</strong></p>
+            <p>1，目前匹配规则比较简单，男女生年龄差小于5的都会进行匹配（效果不错的话，可以扩展规则）</p>
+            <p>2，匹配成功会发送对方email的邮件</p>
+            <p>3，匹配推送频率：目前设定最短3天匹配一次（有可能某一次所有合适的对象都匹配到其他人啦~）</p>
+            <p>4，可随时停止牵线推送，方式详见牵线邮件</p>
+            <p>5，最小信息收集原则，您需要提供个人邮件、年龄、性别即可</p>
+            <!--            <p><strong>注意：请按第一印象最快的选择，如果不能确定，可回忆童年时的情况，或者以你最熟悉的人对你的评价来从中选择。</strong></p>-->
+        </div>
+        <form method="POST" id="userForm" novalidate="novalidate">
+            <div class="field">
+                <div class="field-label" >邮箱：</div>
+                <input type="text" name="email" id="email" class="input-text"/><span id="emailError" class="req"></span>
+            </div>
+            <div class="field">
+                <div class="field-label">性别：</div>
+
+                <select name="gender" id="gender" class="input-text">
+                    <option selected value=0>请选择性别</option>
+                    <option value=1>男生</option>
+                    <option value=2>女生</option>
+                </select>
+                <span id="genderError" class="req"></span><br>
+            </div>
+
+            <div class="field">
+                <div class="field-label">生日：</div>
+                <select name="age" id="age" class="field-label">
+                    <option selected value=0>请选择生日</option>
+                    <option>1980</option>
+                    <option>1981</option>
+                    <option>1982</option>
+                    <option>1983</option>
+                    <option>1984</option>
+                    <option>1985</option>
+                    <option>1986</option>
+                    <option>1987</option>
+                    <option>1988</option>
+                    <option>1989</option>
+                    <option>1990</option>
+                    <option>1991</option>
+                    <option>1992</option>
+                    <option>1993</option>
+                    <option>1994</option>
+                    <option>1995</option>
+                    <option>1996</option>
+                    <option>1997</option>
+                    <option>1998</option>
+                    <option>1999</option>
+                    <option>2000</option>
+                    <option>2001</option>
+                    <option>2002</option>
+                    <option>2003</option>
+                    <option>2004</option>
+                    <option>2005</option>
+                </select>
+                <span id="ageError" class="req"></span>
+            </div>
+
+            <div class="footer">
+                <div class="btn">
+                    <Button id="submitBtn" class="button" type="button">提交</Button>
+                </div>
+            </div>
+        </form>
+        <div id="debug"></div>
+    </div>
+</div>
+
+</body>
+</html>

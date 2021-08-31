@@ -1,4 +1,4 @@
-POST http://127.0.0.1:8080/matchmaker/v1/candidate/add
+POST http://123.57.31.62:8080/matchmaker/v1/candidate/add
 Content-Type: application/json
 
 {
@@ -7,19 +7,20 @@ Content-Type: application/json
 }
 
 #####
-POST http://127.0.0.1:80/matchmaker/v1/candidate/updateStatue
+POST http://123.57.31.62:80/matchmaker/v1/candidate/updateStatus
 Content-Type: application/json
 
 {
-  "email": "cugses@qq.com",
-  "statue": 1
+  "email": "cugsee@qq.com",
+  "status": 1
 }
 
-#####
-POST http://123.57.31.62:80/matchmaker/v1/candidate/add
+##### http://matcher.space/static/candidate.html
+POST http://matcher.space/matchmaker/v1/candidate/add
 Content-Type: application/json
 
 {
   "email": "cugses@qq.com",
-  "gender": 1
+  "gender": 1,
+  "age": 1993
 }

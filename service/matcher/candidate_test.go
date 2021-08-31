@@ -10,12 +10,12 @@ func TestAddCandidate(t *testing.T) {
 		{
 			Email:  "cugses@qq.com",
 			Gender: models.GenderMale,
-			Age:    22,
+			Age:    1993,
 		},
 		{
 			Email:  "cugjyb@163.com",
 			Gender: models.GenderFemale,
-			Age:    24,
+			Age:    1993,
 		},
 	}
 	for _, candidate := range cList {

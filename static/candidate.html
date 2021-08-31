@@ -17,16 +17,6 @@
 <body>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript">
-    /*
-    （1）用户名不能为空
-    （2）用户名必须在6-14位之间
-    （3）用户名只能有数字和字母组成，不能含有其它符号（正则表达式）
-    （4）密码和确认密码一致，邮箱地址合法。
-    （5）统一失去焦点验证
-    （6）错误提示信息统一在span标签中提示，并且要求字体12号，红色。
-    （7）文本框再次获得焦点后，清空错误提示信息，如果文本框中数据不合法要求清空文本框的value
-    （8）最终表单中所有项均合法方可提交
-    */
     window.onload = function () {
 
         // 获取email的span
@@ -126,7 +116,8 @@
     }
 </script>
 
-
+<h1>提供以下信息，定时牵线搭桥</h1>
+<hr>
 <!--这个表单提交应该使用post，这里为了检测，所以使用get。-->
 <!-- <form id="userForm" action="http://localhost:8080/jd/save" method="get"> -->
 <form id="userForm" method="post" style="font-size: 50px">
@@ -176,6 +167,14 @@
     <input type="button" value="提交" id="submitBtn" style="font-size: 50px"/>
     <input type="reset" value="重置" style="font-size: 50px"/>
 </form>
+<br>
+<hr>
+<h1>匹配规则说明</h1>
+<h3>1，目前匹配规则比较简单，男女生年龄差小于5的都会进行匹配（效果不错的话，可以扩展规则）</h3>
+<h3>2，匹配成功会发送对方email的邮件</h3>
+<h3>3，匹配推送频率：目前设定最短3天匹配一次（有可能某一次所有合适的对象都匹配到其他人啦~）</h3>
+<h3>4，可随时停止牵线推送，方式详见牵线邮件</h3>
+<h3>5，最小信息收集原则，您需要提供个人邮件、年龄、性别即可</h3>
 </span>
 </body>
 </html>

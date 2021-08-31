@@ -206,9 +206,15 @@ func SendEmail(targetEmail, matchedEmail string) error {
 	//抄送人
 	//m.SetAddressHeader("Cc", "xxx@qq.com", "xiaozhujiao")
 	//主题
-	m.SetHeader("Subject", "吉大群提醒牵线邮件")
+	m.SetHeader("Subject", "吉大群牵线提醒邮件")
 	//内容
-	m.SetBody("text/html", fmt.Sprintf("<h1>您本次的有缘人邮箱为:%v</h1>", matchedEmail))
+	content := fmt.Sprintf(`<h2>您本次的有缘人邮箱为:</h2>
+<h1> %v </h1>
+<h2>赶快联系相互认识下吧！</h2>
+<br>
+<h4>若要取消推送，<a href="http://123.57.31.62/static/updateStatus.html">请点击</a></h4>
+`, matchedEmail)
+	m.SetBody("text/html", content)
 	//附件
 	//m.Attach("./myIpPic.png")
 
