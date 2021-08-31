@@ -130,7 +130,7 @@ func match(maleList []models.Candidate, femaleList []models.Candidate, matchedMa
 	// 遍历每个男生
 	for _, male := range maleList {
 	inner:
-		for _, female := range femaleList {
+		for idx, female := range femaleList {
 			// 得到key
 			matchedKey := getMatchKey(male.Email, female.Email)
 			// 如果已经匹配过，跳过
@@ -158,7 +158,7 @@ func match(maleList []models.Candidate, femaleList []models.Candidate, matchedMa
 				FemaleAttitude:   models.AttitudeUnknown,
 			})
 			// 每个男生匹配一次女生就停止，并且移除当前女生
-			femaleList = femaleList[1:]
+			femaleList = append(femaleList[:idx], femaleList[idx+1:]...)
 			break inner
 		}
 	}

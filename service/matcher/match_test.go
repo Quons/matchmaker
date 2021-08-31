@@ -7,6 +7,7 @@ import (
 
 func TestDoMatch(t *testing.T) {
 	DailyMatch()
+	//DoMatch()
 	select {} //阻塞主线程停止
 }
 
