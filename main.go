@@ -84,6 +84,11 @@ func main() {
 	go func() {
 		matcher.DailyMatch()
 	}()
+
+	// 重试定时任务
+	go func() {
+		matcher.RetrySendMailCycle()
+	}()
 	logrus.Info("server started")
 	//平滑重启设置 福
 	//Wait for interrupt signal to gracefully shutdown the server with a timeout of 5 seconds.

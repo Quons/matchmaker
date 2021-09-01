@@ -53,6 +53,16 @@ func GetMatchRecordList() ([]MatchRecord, error) {
 	return recordList, err
 }
 
+// GetFailedMatchRecordList 获取发送失败的记录
+func GetFailedMatchRecordList() ([]MatchRecord, error) {
+	var recordList []MatchRecord
+	err := readDB().Where("male_send_status!=? or  female_send_status!=?", SendStatusOK, SendStatusOK).Find(&recordList).Error
+	if err == gorm.ErrRecordNotFound {
+		return recordList, nil
+	}
+	return recordList, err
+}
+
 func AddMatchRecord(record *MatchRecord) error {
 	record.CreateTime = time.Now().Unix()
 	if err := WriteDB().Create(record).Error; err != nil {

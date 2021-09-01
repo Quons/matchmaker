@@ -48,3 +48,13 @@ func TestUpdateMatchRecord(t *testing.T) {
 	}
 
 }
+
+func TestGetFailedMatchRecordList(t *testing.T) {
+
+	got, err := GetFailedMatchRecordList()
+	if err != nil {
+		t.Error(err)
+		return
+	}
+	t.Log(got)
+}
