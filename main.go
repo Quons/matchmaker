@@ -9,6 +9,7 @@ import (
 	"github.com/Quons/matchmaker/pkg/logging"
 	"github.com/Quons/matchmaker/pkg/setting"
 	"github.com/Quons/matchmaker/routers"
+	"github.com/Quons/matchmaker/service/matcher"
 	"github.com/gin-contrib/cors"
 	"github.com/sirupsen/logrus"
 	"log"
@@ -81,7 +82,7 @@ func main() {
 	}()
 	// 开启定时任务监听
 	go func() {
-		//matcher.DailyMatch()
+		matcher.DailyMatch()
 	}()
 	logrus.Info("server started")
 	//平滑重启设置 福

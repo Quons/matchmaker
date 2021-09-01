@@ -1,7 +1,8 @@
 package matcher
 
 import (
-	"math"
+	"fmt"
+	"github.com/robfig/cron"
 	"testing"
 )
 
@@ -12,6 +13,19 @@ func TestDoMatch(t *testing.T) {
 }
 
 func TestAbs(t *testing.T) {
-	t.Log(math.Abs(-1.5))
+	//定时任务
+	c := cron.New()
+	//spec := "* * * * * ?" //cron表达式， 0 3 21 ? * 3 每周2的晚上21点3分执行一次
+	spec := "0 31 21 ? * 2" //cron表达式， 0 3 21 ? * 3 每周2的晚上21点3分执行一次
+	err := c.AddFunc(spec, func() {
+		fmt.Println("................")
+		//DoMatch()
+	})
+	if err != nil {
+		t.Error(err)
+		return
+	}
+	c.Start()
 
+	select {}
 }

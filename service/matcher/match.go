@@ -14,8 +14,8 @@ import (
 func DailyMatch() {
 	c := cron.New() //精确到秒
 
-	//定时任务
-	spec := "*/5 * * * * ?" //cron表达式，每秒一次
+	//定时任务 每周三中午12点整
+	spec := "0 45 9 ? * 3" //cron表达式，
 	_ = c.AddFunc(spec, func() {
 		DoMatch()
 	})
