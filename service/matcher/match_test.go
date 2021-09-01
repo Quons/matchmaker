@@ -29,3 +29,13 @@ func TestAbs(t *testing.T) {
 
 	select {}
 }
+
+func TestSendEmail(t *testing.T) {
+
+	err := SendEmail("cugjyb@163.com", "cugses@qq.com")
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+}
