@@ -32,7 +32,9 @@ func TestAbs(t *testing.T) {
 
 func TestSendEmail(t *testing.T) {
 
-	err := SendEmail("cugjyb@163.com", "cugses@qq.com")
+	//err := SendEmail("rongquanwang@ustb.edu.cn", "565905306@qq.com")
+	err := SendEmail("ermh1712@163.com", "rongquanwang@ustb.edu.cn")
+	//err := SendEmail("rongquanwang@ustb.edu.cn", "ermh1712@163.com")
 	if err != nil {
 		t.Error(err)
 		return

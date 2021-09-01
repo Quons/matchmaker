@@ -212,7 +212,7 @@ func SendEmail(targetEmail, matchedEmail string) error {
 <h1> %v </h1>
 <h2>赶快联系相互认识下吧！</h2>
 <br>
-<h4>若要取消推送，<a href="http://123.57.31.62/static/updateStatus.html">请点击</a></h4>
+<h4>若要暂停推送or继续推送，<a href="http://123.57.31.62/static/updateStatus.html">请点击</a></h4>
 `, matchedEmail)
 	m.SetBody("text/html", content)
 	//附件
