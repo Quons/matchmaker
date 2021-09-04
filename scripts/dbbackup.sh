@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #保存备份个数，备份31天数据
-number=3
+number=24
 #备份保存路径
 backup_dir=/Users/didi/go/src/matchmaker/dbbackup
 #日期
@@ -22,7 +22,7 @@ then
 fi
 
 #简单写法  mysqldump -u root -p123456 users > /root/mysqlbackup/users-$filename.sql
-$tool -u $username -p"$password" $database_name > $backup_dir/$database_name-"$dd".sql
+$tool --host=123.57.31.62 --port=3306 -u $username -p"$password" $database_name > $backup_dir/$database_name-"$dd".sql
 
 #写创建备份日志
 echo "create $backup_dir/$database_name-$dd.dupm" >> $backup_dir/log.txt

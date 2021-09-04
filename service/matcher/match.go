@@ -15,7 +15,7 @@ func DailyMatch() {
 	c := cron.New() //精确到秒
 
 	//定时任务 每周三中午12点整
-	spec := "0 0 10 ? * 3" //cron表达式，
+	spec := "0 15 12 ? * 6" //cron表达式，
 	_ = c.AddFunc(spec, func() {
 		DoMatch()
 	})
@@ -178,7 +178,7 @@ func matchEngine(male, female models.Candidate) (matched bool) {
 		return false
 	}
 	// 2，年龄差需要小于5岁
-	if math.Abs(float64(male.Age-female.Age)) >= 5 {
+	if math.Abs(float64(male.Age-female.Age)) >= 3 {
 		return false
 	}
 	return true
