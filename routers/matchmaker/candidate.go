@@ -55,3 +55,18 @@ func UpdatePushStatus(c *gin.Context) {
 	}
 	appG.Response("更新推送状态成功", e.SUCCESS)
 }
+
+// @Summary 测试接口
+// @Produce  json
+// @Param image post file true "图片文件"
+// @Success 200 {string} json "{"code":200,"data":{"image_save_url":"upload/images/96a.jpg", "image_url": "http://..."}"
+// @Router /api/v1/tags/import [post]
+func GetDemo(c *gin.Context) {
+	appG := app.Gin{C: c}
+	data := make(map[string]interface{})
+	data["name"] = "张三"
+	data["age"] = 18
+	data["sex"] = "男"
+	data["id"] = "001"
+	appG.Response(data, e.SUCCESS)
+}
